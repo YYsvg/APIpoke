@@ -1,0 +1,19 @@
+<h1>Pokemons</h1>
+<div>
+  <%= render "layouts/search", { path: pokemons_fetch_data_path} %>
+  <% if @response.present? %>
+    <table>
+      <tr>
+        <td>No.</td>
+        <td><%= @response["id"] %></td>
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td><%= @response["name"] %>
+      </tr>
+    </table>
+    <%= image_tag(@response["sprites"]["front_default"], size: "200") %>
+  <% else %>
+    <p>検索してね！</p>
+  <% end %>
+</div>
