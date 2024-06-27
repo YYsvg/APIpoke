@@ -1,0 +1,17 @@
+<h1>ゲットしたPokemonたち</h1>
+
+<%= link_to "検索へ戻る", pokemons_fetch_data_path %>
+
+<div>
+    <% @pokemons.each do |pokemon| %>
+      <div>
+        No. <%= pokemon.order %>,
+        Name: <%= pokemon.name %>
+        <div>
+          <%= image_tag(pokemon.image_url, size: "200") %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+

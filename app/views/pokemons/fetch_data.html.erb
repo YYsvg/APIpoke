@@ -1,19 +1,27 @@
 <h1>Pokemons</h1>
 <div>
-  <%= render "layouts/search", { path: pokemons_fetch_data_path} %>
+  <%= render "layouts/search", { path: pokemons_fetch_data_path } %>
   <% if @response.present? %>
+  <%= render "shared/error_messages", { object: @pokemon } %>
     <table>
       <tr>
         <td>No.</td>
-        <td><%= @response["id"] %></td>
+        <td><%= @pokemon.order %></td>
       </tr>
       <tr>
         <td>Name:</td>
-        <td><%= @response["name"] %>
+        <td><%= @pokemon.name %>
       </tr>
     </table>
-    <%= image_tag(@response["sprites"]["front_default"], size: "200") %>
+    <%= image_tag(@pokemon.image_url, size: "200") %>
+
+    <%= form_with model: @pokemon, local: true do |f| %>
+      <%= f.hidden_field :order %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :image_url %>
+      <%= f.submit 'ゲット' %>
+    <% end %>
   <% else %>
-    <p>検索してね！</p>
+    <p>半角数字を入力すると、APIからとってこれます！</p>
   <% end %>
 </div>
