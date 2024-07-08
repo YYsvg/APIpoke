@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root 'pokemons#fetch_data'
   get 'pokemons/new', to: 'pokemons#new', as: 'new_pokemon'
   get 'pokemons/fetch_data', to: 'pokemons#fetch_data'
   get 'pokemons/index', to: 'pokemons#index'
